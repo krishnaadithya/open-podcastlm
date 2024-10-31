@@ -44,6 +44,10 @@ Command Line Arguments
 python main.py --pdf path/to/document.pdf --output podcast.mp3
 ```
 
+## Result:
+
+[Listen to Sample Generated Podcast](https://github.com/krishnaadithya/open-podcastlm/blob/main/asset/gen_podcast.mp3)
+
 ## Project Structure
 
 ```bash
