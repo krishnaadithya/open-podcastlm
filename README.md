@@ -40,7 +40,7 @@ Command Line Arguments
 
 ## Usage
 
-``bash
+```bash
 python main.py --pdf path/to/document.pdf --output podcast.mp3
 ```
 
