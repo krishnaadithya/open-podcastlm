@@ -1,13 +1,28 @@
 import os
 import ast
-from pdf_processor import PDFProcessor
-from text_processor import TextProcessor
-from llm_client import LLMClient
-from audio_generator import AudioGenerator
+import argparse
+from processors.pdf_processor import PDFProcessor
+from processors.text_processor import TextProcessor
+from clients.llm_client import LLMClient
+from generators.audio_generator import AudioGenerator
 
-nubius_key = "eyJhbGciOiJIUzI1NiIsImtpZCI6IlV6SXJWd1h0dnprLVRvdzlLZWstc0M1akptWXBvX1VaVkxUZlpnMDRlOFUiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJnb29nbGUtb2F1dGgyfDExODAyNDEyMDQ0MzAyMjcxNTY1OSIsInNjb3BlIjoib3BlbmlkIG9mZmxpbmVfYWNjZXNzIiwiaXNzIjoiYXBpX2tleV9pc3N1ZXIiLCJhdWQiOlsiaHR0cHM6Ly9uZWJpdXMtaW5mZXJlbmNlLmV1LmF1dGgwLmNvbS9hcGkvdjIvIl0sImV4cCI6MTg4ODAzNzc0MywidXVpZCI6ImQ0YzY0NzQ3LWNjMjAtNDdlMS04YzE1LWI1MzI1NzE3N2Y0YyIsIm5hbWUiOiJub3RlYm9va0xNIiwiZXhwaXJlc19hdCI6IjIwMjktMTAtMzBUMDY6NTU6NDMrMDAwMCJ9.sshRCRWx5volb8re9tpvieni3IS5eyyFMUFzex6fZUM"
+def setup_args():
+    parser = argparse.ArgumentParser(description='Convert PDF to an engaging podcast conversation.')
+    parser.add_argument('--pdf', '-p', type=str, required=True, help='Path to the input PDF file')
+    parser.add_argument('--output', '-o', type=str, default='output.mp3', help='Output audio file path (default: output.mp3)')
+    return parser.parse_args()
 
-def main(pdf_path):
+
+def main():
+
+    args = setup_args()
+
+    nubius_key = os.environ.get("NEBIUS_API_KEY")
+
+    if not nubius_key:
+        print("Error: NEBIUS_API_KEY environment variable not set")
+        return
+
     # Initialize components
     pdf_processor = PDFProcessor()
     text_processor = TextProcessor()
@@ -18,7 +33,7 @@ def main(pdf_path):
     audio_generator = AudioGenerator()
 
     print("Extracting Text .....")
-    extracted_text = pdf_processor.extract_text(pdf_path)
+    extracted_text = pdf_processor.extract_text(args.pdf)
     if not extracted_text:
         return
     
@@ -63,8 +78,8 @@ def main(pdf_path):
     transcript_data = ast.literal_eval(final_transcript)
 
     # Generate audio
-    audio_generator.generate_podcast(transcript_data, "final_podcast.mp3")
+    audio_generator.generate_podcast(transcript_data, args.output)
 
 if __name__ == "__main__":
-    pdf_path = "No-on-33-Rental-Owners-Fact-Sheet-0724_c.pdf"
-    main(pdf_path)
+    #pdf_path = "No-on-33-Rental-Owners-Fact-Sheet-0724_c.pdf"
+    main()

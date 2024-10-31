@@ -1,19 +1,27 @@
-# open-podcastlm
-Convert any PDF into a podcast episode
+# Open PodcastLM
 
-Here's a comprehensive README.md and requirements.txt for your project.
+## Overview
 
-# PDF to Podcast Converter
+Open-PodcastLM is inspired by the NotebookLM and [NotebookLlama](https://github.com/meta-llama/llama-recipes/tree/main/recipes/quickstart/NotebookLlama). It transforms PDF documents into engaging podcast-style conversations using opensource language models and text-to-speech technology. The tool processes PDF content, generates natural dialogues, and creates high-quality audio output featuring two distinct voices.
 
-An AI-powered tool that converts PDF documents into engaging podcast-style conversations using advanced language models and text-to-speech technology.
+Built with:
+- [Meta LLaMA 3.1 8B, 405B](https://studio.nebius.ai/playground?models=meta-llama%2FMeta-Llama-3.1-405B-Instruct) via ([Nebius AI Studio](https://studio.nebius.ai/)
+- [ParlerTTS](https://huggingface.co/parler-tts/parler-tts-mini-v1) for Host Voice
+- [Bark](https://huggingface.co/suno/bark) for Guest Voice
 
+# Features
+
+- **Intelligent PDF Processing:** Advanced text extraction and cleaning
+- **Natural Dialogue Generation:** Creates engaging conversations between host and guest
+- **Dual Voice System:** Distinct voices for host and guest using state-of-the-art TTS models
+- **High-Quality Audio:** Professional-grade audio output with natural speech patterns
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/pdf-to-podcast
-cd pdf-to-podcast
+git clone https://github.com/krishnaadithya/open-podcastlm.git
+cd open-podcastlm
 ```
 
 2. Install dependencies:
@@ -26,13 +34,14 @@ pip install -r requirements.txt
 export NEBIUS_API_KEY='your_api_key_here'
 ```
 
+Command Line Arguments
+--pdf, -p: Path to the input PDF file (required)
+--output, -o: Output audio file path (default: output.mp3)
+
 ## Usage
 
-```python
-from main import main
-
-# Convert a PDF to podcast
-main("path/to/your/document.pdf")
+``bash
+python main.py --pdf path/to/document.pdf --output podcast.mp3
 ```
 
 ## Project Structure
@@ -67,11 +76,9 @@ The system uses two different TTS models:
 - Bark for Speaker 2 (Guest)
 
 ## Requirements
-
 - CUDA-compatible GPU recommended
 - Nebius API access
 
 ## License
-
 MIT License
 
