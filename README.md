@@ -80,7 +80,7 @@ The system uses two different TTS models:
 - Bark for Speaker 2 (Guest)
 
 ## Requirements
-- CUDA-compatible GPU recommended
+- CUDA-compatible GPU with 24GB VRAM
 - Nebius API access
 
 ## License
