@@ -5,7 +5,7 @@
 Open-PodcastLM is inspired by the NotebookLM and [NotebookLlama](https://github.com/meta-llama/llama-recipes/tree/main/recipes/quickstart/NotebookLlama). It transforms PDF documents into engaging podcast-style conversations using opensource language models and text-to-speech technology. The tool processes PDF content, generates natural dialogues, and creates high-quality audio output featuring two distinct voices.
 
 Built with:
-- [Meta LLaMA 3.1 8B, 405B](https://studio.nebius.ai/playground?models=meta-llama%2FMeta-Llama-3.1-405B-Instruct) via ([Nebius AI Studio](https://studio.nebius.ai/)
+- [Meta LLaMA 3.1 8B, 405B](https://studio.nebius.ai/playground?models=meta-llama%2FMeta-Llama-3.1-405B-Instruct) via [Nebius AI Studio](https://studio.nebius.ai/)
 - [ParlerTTS](https://huggingface.co/parler-tts/parler-tts-mini-v1) for Host Voice
 - [Bark](https://huggingface.co/suno/bark) for Guest Voice
 
